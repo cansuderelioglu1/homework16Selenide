@@ -9,33 +9,34 @@ import org.testng.annotations.Test;
 
 public class DemoqaTest {
 
-    private ButtonsPage buttonsPage;
+    private ElementsPage elementsPage;
     private WebTablesPage webTablesPage;
 
     @BeforeClass
     public void setup() {
         WebDriverManager.chromedriver().setup();
         Configuration.timeout = 10000;
-        buttonsPage = new ButtonsPage();
+        elementsPage = new ElementsPage();
         webTablesPage = new WebTablesPage();
     }
-
 
 
     @Test(priority = 0)
 
     public void testClickButton() {
-      buttonsPage.OpenPage();
-        buttonsPage.ClickButton().click();
-        Assert.assertEquals(buttonsPage.DynamicClickMessage().text(), "You have done a dynamic click");
+        elementsPage.OpenPage();
+        elementsPage.Buttons().click();
+        elementsPage.ClickButton().click();
+        Assert.assertEquals(elementsPage.DynamicClickMessage().text(), "You have done a dynamic click");
     }
 
     @Test(priority = 1)
 
     public void testDoubleClickButton() {
-  buttonsPage.OpenPage();
-        buttonsPage.DoubleClickButton().doubleClick();
-        Assert.assertEquals(buttonsPage.DoubleClickMessage().text(), "You have done a double click");
+        elementsPage.OpenPage();
+        elementsPage.Buttons().click();
+        elementsPage.DoubleClickButton().doubleClick();
+        Assert.assertEquals(elementsPage.DoubleClickMessage().text(), "You have done a double click");
     }
 
     @Test(priority = 2)
